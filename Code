@@ -1,0 +1,67 @@
+import java.util.*;
+
+class TicTacToe {
+    public static void main(String[] args) {
+        // 3x3 tic-tac-toe board represented by a 2D array
+        int[][] board = new int[3][3];
+
+        // Variables for user input and game control
+        int row, col, count = 0;
+        char symbol;
+        boolean flag = true; // Flag to check if the game is still ongoing
+        Scanner sc = new Scanner(System.in);
+
+        // HashMaps to track the occurrences of symbols in rows and columns
+        HashMap<Integer, HashMap<Character, Integer>> hmrow = new HashMap<>();
+        HashMap<Integer, HashMap<Character, Integer>> hmcol = new HashMap<>();
+
+        // Game loop
+        while (count < 9) {
+            System.out.println("Please enter where you want to make a move and symbol");
+            row = sc.nextInt();
+            col = sc.nextInt();
+            symbol = sc.next().charAt(0);
+
+            // Initialize inner HashMaps if not already present for the specified row and column
+            hmrow.putIfAbsent(row, new HashMap<>());
+            hmcol.putIfAbsent(col, new HashMap<>());
+
+            // Check and update occurrences in the row
+            if (hmrow.get(row).containsKey(symbol)) {
+                int of = hmrow.get(row).get(symbol);
+                int nf = of + 1;
+                hmrow.get(row).put(symbol, nf);
+                // Check if a player has won in the current row
+                if (nf == 3) {
+                    System.out.println(symbol + " is a Winner");
+                    flag = false;
+                    break;
+                }
+            } else {
+                hmrow.get(row).put(symbol, 1);
+            }
+
+            // Check and update occurrences in the column
+            if (hmcol.get(col).containsKey(symbol)) {
+                int of = hmcol.get(col).get(symbol);
+                int nf = of + 1;
+                hmcol.get(col).put(symbol, nf);
+                // Check if a player has won in the current column
+                if (nf == 3) {
+                    System.out.println(symbol + " is a Winner");
+                    flag = false;
+                    break;
+                }
+            } else {
+                hmcol.get(col).put(symbol, 1);
+            }
+
+            count++; // Increment move count
+        }
+
+        // Print result if the game is still ongoing (flag is true)
+        if (flag) {
+            System.out.println("Draw");
+        }
+    }
+}
