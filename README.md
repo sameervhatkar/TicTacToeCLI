@@ -35,21 +35,30 @@ This implementation focuses on tracking symbol occurrences in rows and columns a
 Output:
 Please enter where you want to make a move and symbol
 2 2 X
+
 Please enter where you want to make a move and symbol
 2 1 0
+
 Please enter where you want to make a move and symbol
 1 1 X
+
 Please enter where you want to make a move and symbol
 0 0 0
+
 Please enter where you want to make a move and symbol
 2 0 X
+
 Please enter where you want to make a move and symbol
 0 2 0
+
 Please enter where you want to make a move and symbol
 0 1 X
+
 Please enter where you want to make a move and symbol
 1 0 0
+
 Please enter where you want to make a move and symbol
 1 2 X
+
 Draw
 
